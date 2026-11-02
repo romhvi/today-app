@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>today app</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+<div id="auth-view" class="auth-wrap">
+<form id="auth-form" class="auth-card">
+<div class="logo">today<span>.</span></div>
+<p class="muted">your personal space</p>
+<label>Email</label>
+<input id="email" type="email" required autocomplete="email" placeholder="name@example.com">
+<label>Password</label>
+<input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters">
+<button class="primary" id="auth-submit">Sign in</button>
+<p id="auth-message" class="message"></p>
+<button type="button" class="link-btn" id="auth-toggle">Create account</button>
+</form>
+</div>
+
+<div id="app" class="hidden">
+<aside class="sidebar">
+<div class="logo">today<span>.</span></div>
+<nav>
+<button class="nav active" data-page="today">◷ <span>Today</span></button>
+<button class="nav" data-page="stats">▦ <span>Statistics</span></button>
+<button class="nav" data-page="shop">☆ <span>Shop</span></button>
+</nav>
+<div class="side-bottom">
+<div class="balance">☆ <b id="stars">0</b> stars</div>
+<button id="logout" class="link-btn">Sign out</button>
+</div>
+</aside>
+
+<main class="main">
+<header>
+<div>
+<div class="eyebrow" id="date-label"></div>
+<h1 id="page-title">Today</h1>
+</div>
+<div class="top-stars">☆ <b id="stars-top">0</b></div>
+</header>
+
+<section id="page-today" class="page">
+<div class="section-head">
+<h2>Habits</h2>
+<button class="add-btn" id="add-habit">＋ Add habit</button>
+</div>
+<div id="habits-list" class="list"></div>
+
+<div class="section-head todo-head">
+<h2>To-do</h2>
+<button class="add-btn" id="add-task">＋ Add task</button>
+</div>
+<div id="tasks-list" class="list"></div>
+</section>
+
+<section id="page-stats" class="page hidden">
+<div class="month-nav">
+<button id="prev-month">‹</button>
+<h2 id="month-name"></h2>
+<button id="next-month">›</button>
+</div>
+
+<div class="stats-grid">
+<article class="stat-card"><span>Completed tasks</span><strong id="stat-done">0</strong></article>
+<article class="stat-card"><span>Stars earned</span><strong id="stat-earned">0 ☆</strong></article>
+<article class="stat-card"><span>Habit consistency</span><strong id="stat-rate">0%</strong></article>
+</div>
+
+<div class="stats-grid extra-stats">
+<article class="stat-card"><span>Current streak</span><strong id="stat-streak">0 days</strong></article>
+<article class="stat-card"><span>Best streak</span><strong id="stat-best-streak">0 days</strong></article>
+<article class="stat-card"><span>Most productive day</span><strong id="stat-best-day">—</strong></article>
+</div>
+
+<h2 class="subheading">Habit calendar</h2>
+<div class="calendar-filter">
+<label for="habit-filter">Habit history</label>
+<select id="habit-filter"><option value="all">All habits</option></select>
+</div>
+
+<div class="calendar-card">
+<div class="calendar-week">
+<span>Mon</span><span>Tue</span><span>Wed</span>
+<span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+<div id="habit-calendar" class="calendar-grid"></div>
+</div>
+
+<div id="calendar-detail" class="calendar-detail hidden"></div>
+
+<h2 class="subheading">Habit activity</h2>
+<div id="habit-stats" class="list"></div>
+</section>
+
+<section id="page-shop" class="page hidden">
+<div class="section-head">
+<h2>Your rewards</h2>
+<button class="add-btn" id="add-reward">＋ Add reward</button>
+</div>
+<div id="shop-list" class="shop-grid"></div>
+<h2 class="subheading">Purchase history</h2>
+<div id="purchase-history" class="list"></div>
+</section>
+</main>
+</div>
+
+<div id="modal" class="modal hidden">
+<form id="modal-form" class="modal-card">
+<button type="button" id="modal-close" class="close">×</button>
+<h2 id="modal-title"></h2>
+<div id="modal-fields"></div>
+<button class="primary" type="submit">Save</button>
+</form>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<div id="purchase-modal" class="modal hidden">
+<div class="purchase-card">
+<div class="purchase-sparkle">✦</div>
+<h2 id="purchase-title">Reward unlocked!</h2>
+<p id="purchase-description"></p>
+<button class="primary" id="purchase-ok">Amazing!</button>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>
