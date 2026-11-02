@@ -5,7 +5,14 @@ const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const $=id=>document.getElementById(id);
 
 let signup=false,user=null;
-let data={stars:0,habits:[],tasks:[],rewards:[],events:[]};
+let data={
+  stars:0,
+  habits:[],
+  tasks:[],
+  rewards:[],
+  events:[],
+  notes:{}
+};
 let month=new Date();
 let selectedHabit="all";
 let selectedCalendarDate=null;
@@ -86,6 +93,24 @@ async function loadData(){
   data.rewards=data.rewards||[];
 }
 
+let notesTimer;
+
+$('daily-notes').addEventListener('input',()=>{
+  const date=today();
+
+  if(!data.notes)data.notes={};
+  data.notes[date]=$('daily-notes').value;
+
+  $('notes-status').textContent='Saving...';
+
+  clearTimeout(notesTimer);
+
+  notesTimer=setTimeout(async()=>{
+    await save();
+    $('notes-status').textContent='Saved';
+  },700);
+});
+
 let saveTimer;
 async function save(){
   clearTimeout(saveTimer);
@@ -118,6 +143,7 @@ function render(){
   $('stars').textContent=$('stars-top').textContent=data.stars;
   renderHabits();
   renderTasks();
+  renderQuickNotes();
   renderShop();
   renderStats();
 }
@@ -153,6 +179,13 @@ function renderTasks(){
       ${completed.map(taskCard).join('')}`:''}
     ${!list.length?empty('Nothing planned. Enjoy your day!'):''}
   `;
+}
+function renderQuickNotes(){
+  const input=$('daily-notes');
+  if(!input)return;
+
+  input.value=data.notes?.[today()]||'';
+  $('notes-status').textContent='Saved';
 }
 
 function taskCard(t){

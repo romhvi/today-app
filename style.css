@@ -391,3 +391,59 @@ h1{font-size:35px}
     padding: 8px 10px;
   }
 }
+/* QUICK NOTES */
+
+.notes-head {
+  margin-top: 34px;
+}
+
+#notes-status {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.notes-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+#daily-notes {
+  display: block;
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+#daily-notes::placeholder {
+  color: #b0b0b5;
+}
+
+#daily-notes:focus {
+  box-shadow: none;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .notes-head {
+    margin-top: 28px;
+  }
+
+  .notes-card {
+    padding: 14px;
+  }
+
+  #daily-notes {
+    min-height: 150px;
+    font-size: 15px;
+  }
+}
