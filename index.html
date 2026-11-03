@@ -41,6 +41,7 @@
 <button class="nav active" data-page="today">◷ <span>Today</span></button>
 <button class="nav" data-page="stats">▦ <span>Statistics</span></button>
 <button class="nav" data-page="shop">☆ <span>Shop</span></button>
+<button class="nav" data-page="library">▤ <span>Library</span></button>
 </nav>
 <div class="side-bottom">
 <div class="balance">☆ <b id="stars">0</b> stars</div>
@@ -69,19 +70,20 @@
 <button class="add-btn" id="add-task">＋ Add task</button>
 </div>
 <div id="tasks-list" class="list"></div>
-</section>
-<div class="section-head notes-head">
-  <h2>Quick Notes</h2>
-  <span id="notes-status">Saved</span>
-</div>
 
-<div class="notes-card">
-  <textarea
-    id="daily-notes"
-    placeholder="What's on your mind today?..."
-    maxlength="5000"
-  ></textarea>
+<div class="section-head mood-head"><h2>Mood &amp; Energy</h2><span class="muted">today</span></div>
+<div class="mood-card">
+  <div class="mood-label">How are you feeling?</div>
+  <div id="mood-options" class="mood-options">
+    <button type="button" data-mood="1" aria-label="Awful">😣</button><button type="button" data-mood="2" aria-label="Low">😕</button><button type="button" data-mood="3" aria-label="Okay">😐</button><button type="button" data-mood="4" aria-label="Good">🙂</button><button type="button" data-mood="5" aria-label="Amazing">🥰</button>
+  </div>
+  <div class="energy-row"><span>Energy</span><div id="energy-options"><button type="button" data-energy="1">1</button><button type="button" data-energy="2">2</button><button type="button" data-energy="3">3</button></div></div>
+  <textarea id="mood-note" placeholder="A little note about today…" maxlength="1000"></textarea>
+  <div id="mood-status" class="save-status">Saved</div>
 </div>
+<div class="section-head notes-head"><h2>Quick Notes</h2><span id="notes-status">Saved</span></div>
+<div class="notes-card"><textarea id="daily-notes" placeholder="What's on your mind today?..." maxlength="5000"></textarea></div>
+</section>
 
 <section id="page-stats" class="page hidden">
 <div class="month-nav">
@@ -130,6 +132,11 @@
 <div id="shop-list" class="shop-grid"></div>
 <h2 class="subheading">Purchase history</h2>
 <div id="purchase-history" class="list"></div>
+</section>
+<section id="page-library" class="page hidden">
+  <div class="section-head"><h2>My collection</h2><button class="add-btn" id="add-library">＋ Add item</button></div>
+  <div class="library-filters" id="library-filters"><button class="filter active" data-kind="all">All</button><button class="filter" data-kind="book">Books</button><button class="filter" data-kind="movie">Movies</button><button class="filter" data-kind="series">Series</button><button class="filter" data-kind="podcast">Podcasts</button><button class="filter" data-kind="article">Articles</button></div>
+  <div id="library-grid" class="library-grid"></div>
 </section>
 </main>
 </div>
