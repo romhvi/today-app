@@ -498,9 +498,9 @@ document.addEventListener('click',e=>{
     if(h.done===date){
       h.done=null;data.stars=Math.max(0,data.stars-h.stars);
       data.events=data.events.filter(ev=>!(
-        (ev.type==='habit'&&ev.habitId===h.id&&ev.date===date)||
-        (ev.type==='earn'&&ev.habitId===h.id&&ev.date===date
-      ));
+  (ev.type==='habit'&&ev.habitId===h.id&&ev.date===date)||
+  (ev.type==='earn'&&ev.habitId===h.id&&ev.date===date)
+));
     }else{
       h.done=date;data.stars+=h.stars;
       data.events.push({type:'habit',date,amount:h.stars,name:h.name,habitId:h.id});
