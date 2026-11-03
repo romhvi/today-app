@@ -633,3 +633,57 @@ const F1_2026 = [
     ]
   }
 ];
+// F1 Countdown Banner
+function renderF1Banner() {
+  const banner = document.getElementById('f1-banner');
+  if (!banner || !Array.isArray(F1_2026)) return;
+
+  const sessionName = document.getElementById('f1-session-name');
+  const sessionDate = document.getElementById('f1-session-date');
+  const countdown = document.getElementById('f1-countdown');
+
+  const now = new Date();
+
+  const sessions = F1_2026.flatMap(race =>
+    race.sessions.map(session => ({
+      ...session,
+      raceName: race.name,
+      raceDate: race.dateLabel,
+      datetime: new Date(`${session.date}T${session.time}:00+03:00`)
+    }))
+  ).sort((a, b) => a.datetime - b.datetime);
+
+  const next = sessions.find(session => session.datetime >= now);
+
+  // Season completed
+  if (!next) {
+    banner.classList.add('finished');
+    sessionName.textContent = 'Season 2026 completed';
+    sessionDate.textContent = 'See you next year!';
+    countdown.innerHTML = '🏎️';
+    document.querySelector('.f1-banner-label').textContent = '🏁 SEASON FINALE';
+    return;
+  }
+
+  const diff = next.datetime - now;
+  const days = Math.floor(diff / 86400000);
+
+  const dateText = next.datetime.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short'
+  });
+
+  sessionName.textContent = `${next.raceName} · ${next.name}`;
+  sessionDate.textContent = `${dateText} · ${next.time} MSK`;
+
+  document.querySelector('.f1-banner-label').textContent =
+    '🏁 NEXT SESSION';
+
+  if (days > 0) {
+    countdown.innerHTML = `IN <strong>${days}</strong> DAYS`;
+  } else {
+    countdown.innerHTML = `<strong>TODAY</strong> 🏎️`;
+  }
+}
+
+renderF1Banner();
