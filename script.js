@@ -441,10 +441,12 @@ $('habit-calendar').addEventListener('click',e=>{
   `;
 });
 
+
 function modal(title,html,onSubmit){
   $('modal-title').textContent=title;
-  $('modal-body').innerHTML=html;
+  $('modal-fields').innerHTML=html;
   $('modal').classList.remove('hidden');
+
   const form=$('modal-form');
   form.onsubmit=async e=>{
     e.preventDefault();
@@ -452,6 +454,7 @@ function modal(title,html,onSubmit){
     await onSubmit(fd);
     $('modal').classList.add('hidden');
   };
+}
 }
 $('modal-close').onclick=()=> $('modal').classList.add('hidden');
 $('modal').addEventListener('click',e=>{
