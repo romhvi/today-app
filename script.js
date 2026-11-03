@@ -578,3 +578,58 @@ document.addEventListener('click',e=>{
   if(error)msg(error.message);
   if(sessionData.session)await enter(sessionData.session.user);
 })();
+
+const F1_2026 = [
+  {
+    name: "Brazil GP",
+    flag: "🇧🇷",
+    start: "2026-11-06",
+    end: "2026-11-08",
+    sessions: [
+      { name: "FP1", date: "2026-11-06", time: "18:30" },
+      { name: "FP2", date: "2026-11-06", time: "22:00" },
+      { name: "FP3", date: "2026-11-07", time: "17:30" },
+      { name: "Qualifying", date: "2026-11-07", time: "21:00" },
+      { name: "Race", date: "2026-11-08", time: "20:00" }
+    ]
+  },
+  {
+    name: "Las Vegas GP",
+    flag: "🇺🇸",
+    start: "2026-11-20",
+    end: "2026-11-22",
+    sessions: [
+      { name: "FP1", date: "2026-11-20", time: "03:30" },
+      { name: "FP2", date: "2026-11-20", time: "07:00" },
+      { name: "FP3", date: "2026-11-21", time: "03:30" },
+      { name: "Qualifying", date: "2026-11-21", time: "07:00" },
+      { name: "Race", date: "2026-11-22", time: "07:00" }
+    ]
+  },
+  {
+    name: "Qatar GP",
+    flag: "🇶🇦",
+    start: "2026-11-27",
+    end: "2026-11-29",
+    sessions: [
+      { name: "FP1", date: "2026-11-27", time: "16:30" },
+      { name: "Sprint Qualifying", date: "2026-11-27", time: "20:30" },
+      { name: "Sprint", date: "2026-11-28", time: "17:00" },
+      { name: "Qualifying", date: "2026-11-28", time: "21:00" },
+      { name: "Race", date: "2026-11-29", time: "19:00" }
+    ]
+  },
+  {
+    name: "Abu Dhabi GP",
+    flag: "🇦🇪",
+    start: "2026-12-04",
+    end: "2026-12-06",
+    sessions: [
+      { name: "FP1", date: "2026-12-04", time: "12:30" },
+      { name: "FP2", date: "2026-12-04", time: "16:00" },
+      { name: "FP3", date: "2026-12-05", time: "13:30" },
+      { name: "Qualifying", date: "2026-12-05", time: "17:00" },
+      { name: "Race", date: "2026-12-06", time: "16:00" }
+    ]
+  }
+];
